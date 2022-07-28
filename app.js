@@ -21,12 +21,13 @@ entradaDados.question('Digite um número: \n', function(valor1){
     
     entradaDados.question('Digite outro número: \n', function(valor2){
         let number2 = parseFloat(valor2)
-        
+
         entradaDados.question('Escolha a operação a ser calculada: somar[+], subtrair[-], multiplicar[*], dividir[/]\n', function(opcao){
             //Declaração da variavel que recebe o tipo de operação a ser realizada.
                 //Usando o 'toUpperCase()' para converter o texto digitado para maíusculo
 
             let operacao = opcao.toUpperCase();
+
             /******
              * Uso do '='no javascript
              
@@ -37,24 +38,41 @@ entradaDados.question('Digite um número: \n', function(valor1){
              ******/
 
             let resultado
+            let error = false
 
-            //Estrutura de decisão relacionada a escolha da operação matematica desejada
-            if(operacao == 'SOMAR' || operacao == '+')
-                resultado = number1 + number2
-            else if(operacao == 'SUBTRAIR'|| operacao == '-')
-                resultado = number1 - number2
-            else if(operacao == 'MULTIPLICAR'|| operacao == '*')
-                resultado = number1 * number2
-            else if(operacao == 'DIVIDIR'|| operacao == '/')
-                resultado = number1 / number
-            else
-                resultado = ''
-   
+            if(isNaN(number1) || isNaN(number2)){
+                resultado = 'Erro - Apenas números são aceitos'
+                error = true
+            }
+            else{
+                //Estrutura de decisão relacionada a escolha da operação matematica desejada
+                if(operacao == 'SOMAR' || operacao == '+')
+                    resultado = number1 + number2
+                else if(operacao == 'SUBTRAIR'|| operacao == '-')
+                    resultado = number1 - number2
+                else if(operacao == 'MULTIPLICAR'|| operacao == '*')
+                    resultado = number1 * number2
+                else if(operacao == 'DIVIDIR'|| operacao == '/'){
+                    //Tratamento de divisão por 0
+                    if(number2 == 0){
+                        resultado = 'Erro - Não é possível divisão por zero'
+                        error = true
+                    }
+                    else
+                    resultado = number1 / number
+                }
+                else{
+                    resultado = 'ERRO - Não foi escolhida uma operação válida'
+                    error = true
+                }
+            }
+
             //Estrutura de decisão relacionado a saída do código
-            if(resultado != '')
-                console.log('O resultado da conta é: ' +resultado)
+            if(error)
+                console.log(resultado)
             else
-                console.log('ERRO - Não foi escolhida uma operação válida')
+                console.log('O resultado da conta é: ' +resultado)
+            process.exit(0)
         })
     })
 })
