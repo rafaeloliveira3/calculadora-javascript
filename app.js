@@ -38,41 +38,53 @@ entradaDados.question('Digite um número: \n', function(valor1){
              ******/
 
             let resultado
-            let error = false
 
-            if(isNaN(number1) || isNaN(number2)){
-                resultado = 'Erro - Apenas números são aceitos'
-                error = true
-            }
-            else{
-                //Estrutura de decisão relacionada a escolha da operação matematica desejada
-                if(operacao == 'SOMAR' || operacao == '+')
-                    resultado = number1 + number2
-                else if(operacao == 'SUBTRAIR'|| operacao == '-')
-                    resultado = number1 - number2
-                else if(operacao == 'MULTIPLICAR'|| operacao == '*')
-                    resultado = number1 * number2
-                else if(operacao == 'DIVIDIR'|| operacao == '/'){
-                    //Tratamento de divisão por 0
-                    if(number2 == 0){
-                        resultado = 'Erro - Não é possível divisão por zero'
-                        error = true
-                    }
-                    else
-                    resultado = number1 / number
-                }
-                else{
-                    resultado = 'ERRO - Não foi escolhida uma operação válida'
-                    error = true
-                }
-            }
-
-            //Estrutura de decisão relacionado a saída do código
-            if(error)
-                console.log(resultado)
-            else
+            if(resultado = calcular(number1, number2, operacao))
                 console.log('O resultado da conta é: ' +resultado)
             process.exit(0)
         })
     })
 })
+
+function calcular(valor1, valor2, operacaoMat){
+    
+
+    //Criação de variáveis local para recebimento dos atributos encaminhados na função
+    let number1 = valor1
+    let number2 = valor2
+    let operacao = operacaoMat.toUpperCase()
+    let resultado
+    let error = false
+
+    if(isNaN(number1) || isNaN(number2)){
+        console.log('Erro - Apenas números são aceitos')
+        error = true
+    }
+    else{
+        //Estrutura de decisão relacionada a escolha da operação matematica desejada
+        if(operacao == 'SOMAR' || operacao == '+')
+            resultado = number1 + number2
+        else if(operacao == 'SUBTRAIR'|| operacao == '-')
+            resultado = number1 - number2
+        else if(operacao == 'MULTIPLICAR'|| operacao == '*')
+            resultado = number1 * number2
+        else if(operacao == 'DIVIDIR'|| operacao == '/'){
+            //Tratamento de divisão por 0
+            if(number2 == 0){
+                console.log('Erro - Não é possível divisão por zero')
+                error = true
+            }
+            else
+            resultado = number1 / number2
+        }
+        else{
+            console.log('Erro - Não foi escolhida uma operação válida')
+            error = true
+        }
+    }
+    
+    if(error)
+        return false
+    else
+        return resultado
+}
