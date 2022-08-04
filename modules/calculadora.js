@@ -5,6 +5,7 @@
  * Versão: 1.0
  *************************************************************************************/
 
+//Metodo tradicional para criação de funções (menos utilizado no JavaScript)
 function calcular(valor1, valor2, operacaoMat){
     
 
@@ -46,4 +47,18 @@ function calcular(valor1, valor2, operacaoMat){
         return false
     else
         return resultado
+}
+
+/****
+ * Metodo alternativo (e bastante utilizado) para criação de funções:
+ * 
+ * const calcular = function(){
+ * 
+ * }
+ * 
+ * Utiliza o padrão de Call Back
+ ****/
+// Compilando todas as funções que serão usadas em outros projetos no "module.exports". Todas as funções não inclusas serão disponíveis apenas localmente.
+module.exports = {
+    calcular
 }

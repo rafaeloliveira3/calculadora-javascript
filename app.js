@@ -1,5 +1,7 @@
-console.log('Calculadora Simples')
+console.log('Calculadora Simples\n')
 
+// Import di arquivo de função para realizar calculos   
+const { calcular } = require('./modules/calculadora')
 //Import da biblioteca de entrada de dados
 var readLine = require('readline')
 
