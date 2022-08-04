@@ -5,7 +5,7 @@
  * Versão: 1.0
  *************************************************************************************/
 
-//Metodo tradicional para criação de funções
+//Metodo de padrão callback para criação de funções
 const calcular = function (valor1, valor2, operacaoMat){
     
 
@@ -53,16 +53,6 @@ const somar = (valor1, valor2) => parseFloat(valor1) + parseFloat(valor2)
 const subtrair = (valor1, valor2) => parseFloat(valor1) - parseFloat(valor2)
 const multiplicar = (valor1, valor2) => parseFloat(valor1) * parseFloat(valor2)
 const dividir = (valor1, valor2) => parseFloat(valor1) / parseFloat(valor2)
-
-/****
- * Metodo alternativo (e bastante utilizado) para criação de funções:
- * 
- * const calcular = function(){
- * 
- * }
- * 
- * Utiliza o padrão de Call Back
- ****/
 
 // Compilando todas as funções que serão usadas em outros projetos no "module.exports". Todas as funções não incluconst serão disponíveis apenas localmente.
 module.exports = {
