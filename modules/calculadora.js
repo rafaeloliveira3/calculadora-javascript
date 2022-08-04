@@ -5,8 +5,8 @@
  * Versão: 1.0
  *************************************************************************************/
 
-//Metodo tradicional para criação de funções (menos utilizado no JavaScript)
-function calcular(valor1, valor2, operacaoMat){
+//Metodo tradicional para criação de funções
+const calcular = function (valor1, valor2, operacaoMat){
     
 
     //Criação de variáveis local para recebimento dos atributos encaminhados na função
@@ -23,11 +23,11 @@ function calcular(valor1, valor2, operacaoMat){
     else{
         //Estrutura de decisão relacionada a escolha da operação matematica desejada
         if(operacao == 'SOMAR' || operacao == '+')
-            resultado = number1 + number2
+            resultado = somar(number1, number2)
         else if(operacao == 'SUBTRAIR'|| operacao == '-')
-            resultado = number1 - number2
+            resultado = subtrair(number1, number2)
         else if(operacao == 'MULTIPLICAR'|| operacao == '*')
-            resultado = number1 * number2
+            resultado = multiplicar(number1, number2)
         else if(operacao == 'DIVIDIR'|| operacao == '/'){
             //Tratamento de divisão por 0
             if(number2 == 0){
@@ -35,7 +35,7 @@ function calcular(valor1, valor2, operacaoMat){
                 error = true
             }
             else
-            resultado = number1 / number2
+            resultado = dividir(number1, number2)
         }
         else{
             console.log('Erro - Não foi escolhida uma operação válida')
@@ -46,8 +46,13 @@ function calcular(valor1, valor2, operacaoMat){
     if(error)
         return false
     else
-        return resultado
-}
+        return resultado.toFixed(2)
+    }
+    
+const somar = (valor1, valor2) => parseFloat(valor1) + parseFloat(valor2)
+const subtrair = (valor1, valor2) => parseFloat(valor1) - parseFloat(valor2)
+const multiplicar = (valor1, valor2) => parseFloat(valor1) * parseFloat(valor2)
+const dividir = (valor1, valor2) => parseFloat(valor1) / parseFloat(valor2)
 
 /****
  * Metodo alternativo (e bastante utilizado) para criação de funções:
@@ -58,7 +63,8 @@ function calcular(valor1, valor2, operacaoMat){
  * 
  * Utiliza o padrão de Call Back
  ****/
-// Compilando todas as funções que serão usadas em outros projetos no "module.exports". Todas as funções não inclusas serão disponíveis apenas localmente.
+
+// Compilando todas as funções que serão usadas em outros projetos no "module.exports". Todas as funções não incluconst serão disponíveis apenas localmente.
 module.exports = {
     calcular
 }
